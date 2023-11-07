@@ -40,7 +40,7 @@ function App() {
                 <h2>{obj.title}</h2>
                 <p>{obj.text.slice(0, 60)}...</p>
                 <p>
-                  By {obj.author_id.first_name} {obj.author_id.last_name}
+                  By {obj.author.first_name} {obj.author.last_name}
                 </p>
                 <p>
                   Published {DateTime.fromISO(obj.timestamp).toLocaleString(DateTime.DATETIME_MED)}
@@ -56,5 +56,13 @@ function App() {
 export default App;
 
 // change all instances of author_id to author and post_id to post
+
+// implement react router
+
+// create component for blog posts and include link to individual posts
+
+// add ability to click on and display individual blog post with comments
+
+// add ability to add comments to posts
 
 // GO BACK AND ENABLE CORS ONLY FOR THIS WEBSITE
