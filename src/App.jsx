@@ -4,6 +4,7 @@ import { Outlet, Link } from 'react-router-dom';
 
 function App() {
   const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -14,7 +15,7 @@ function App() {
         }
         const postData = await response.json();
         setPosts(postData);
-        console.log(postData);
+        // console.log(postData);
       } catch (err) {
         setPosts([]);
         console.log(err);
@@ -23,12 +24,32 @@ function App() {
     getPosts();
   }, []);
 
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        const response = await fetch(
+          `https://blog-api-production-7f4c.up.railway.app/api/comments`,
+        );
+        if (!response.ok) {
+          throw new Error(`This is an HTTP error: The status is ${response.status}`);
+        }
+        const commentData = await response.json();
+        setComments(commentData);
+        // console.log(commentData);
+      } catch (err) {
+        setComments([]);
+        console.log(err);
+      }
+    };
+    getComments();
+  }, []);
+
   return (
     <>
       <Link to="/">
         <h1 className="header-txt">Blog4Cats</h1>
       </Link>
-      <Outlet context={{ posts }} />
+      <Outlet context={{ posts, comments }} />
     </>
   );
 }

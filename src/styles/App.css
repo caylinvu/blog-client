@@ -44,5 +44,28 @@ a {
 
 .post p:last-child {
   text-align: left;
-  padding-top: 15px;
+  padding: 15px 0;
+}
+
+/* ~~~~~~~~~~COMMENTS~~~~~~~~~~ */
+
+.comment-container {
+  text-align: left;
+  width: 500px;
+  margin: auto;
+}
+
+.comment-container h2 {
+  text-align: center;
+}
+
+.comment {
+  border: solid black 1px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 0 20px;
+}
+
+.no-comments {
+  text-align: center;
 }
