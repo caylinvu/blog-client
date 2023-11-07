@@ -1,6 +1,6 @@
 import './styles/App.css';
 import { useState, useEffect } from 'react';
-import Post from './components/Post';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <h1>Blog</h1>
-      <Post posts={posts} />
+      <Outlet context={{ posts }} />
     </>
   );
 }
