@@ -56,8 +56,6 @@ function App() {
 
 export default App;
 
-// add ability to click on and display individual blog post with comments
-
 // add ability to add comments to posts
 
 // GO BACK AND ENABLE CORS ONLY FOR THIS WEBSITE

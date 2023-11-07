@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import { useState, useEffect } from 'react';
 import { useOutletContext, useParams } from 'react-router-dom';
+import AddComment from './AddComment';
 
 function Comments() {
   const { comments } = useOutletContext();
@@ -14,6 +15,7 @@ function Comments() {
   return (
     <div className="comment-container">
       <h2>Comments</h2>
+      <AddComment />
       {postComments.length > 0 ? (
         postComments.map((obj) => {
           return (
