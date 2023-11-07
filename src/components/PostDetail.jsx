@@ -6,9 +6,22 @@ function PostDetail() {
   const { postId } = useParams();
 
   return (
-    <>
-      <h1>This is some post detail for id {postId}</h1>
-    </>
+    <div className="post-detail">
+      {posts
+        .filter((obj) => obj._id === postId)
+        .map((obj) => {
+          return (
+            <div key={obj._id} className="post">
+              <h1>{obj.title}</h1>
+              <p>
+                {DateTime.fromISO(obj.timestamp).toLocaleString(DateTime.DATETIME_MED)} || by{' '}
+                {obj.author.first_name} {obj.author.last_name}
+              </p>
+              <p>{obj.text}</p>
+            </div>
+          );
+        })}
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 import './styles/App.css';
 import { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -31,7 +31,9 @@ function App() {
 
   return (
     <>
-      <h1>Blog</h1>
+      <Link to="/">
+        <h1 className="header-txt">Blog4Cats</h1>
+      </Link>
       <Outlet context={{ posts }} />
     </>
   );
