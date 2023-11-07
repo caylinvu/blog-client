@@ -4,8 +4,6 @@ import { Outlet, Link } from 'react-router-dom';
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -16,14 +14,10 @@ function App() {
         }
         const postData = await response.json();
         setPosts(postData);
-        setError(null);
         console.log(postData);
       } catch (err) {
-        setError(err.message);
-        setPosts(null);
+        setPosts([]);
         console.log(err);
-      } finally {
-        setLoading(false);
       }
     };
     getPosts();
@@ -41,12 +35,8 @@ function App() {
 
 export default App;
 
-// create component for blog posts and include link to individual posts
-
 // add ability to click on and display individual blog post with comments
 
 // add ability to add comments to posts
-
-// set up error/loading screens
 
 // GO BACK AND ENABLE CORS ONLY FOR THIS WEBSITE

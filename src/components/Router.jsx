@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '../App';
-import PostContainer from './PostContainer';
+import PreviewContainer from './PreviewContainer';
 import PostDetail from './PostDetail';
 
 function Router() {
@@ -9,7 +9,7 @@ function Router() {
       path: '/',
       element: <App />,
       children: [
-        { path: '/', element: <PostContainer /> },
+        { path: '/', element: <PreviewContainer /> },
         { path: '/post/:postId', element: <PostDetail /> },
       ],
     },
