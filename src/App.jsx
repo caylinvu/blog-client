@@ -39,10 +39,6 @@ function App() {
 
 export default App;
 
-// change all instances of author_id to author and post_id to post
-
-// implement react router
-
 // create component for blog posts and include link to individual posts
 
 // add ability to click on and display individual blog post with comments
