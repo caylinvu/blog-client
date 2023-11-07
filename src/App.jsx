@@ -1,6 +1,6 @@
 import './styles/App.css';
 import { useState, useEffect } from 'react';
-import { DateTime } from 'luxon';
+import Post from './components/Post';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -31,24 +31,8 @@ function App() {
 
   return (
     <>
-      <div className="post-container">
-        {posts
-          .filter((obj) => obj.isPublished)
-          .map((obj) => {
-            return (
-              <div key={obj._id} className="post">
-                <h2>{obj.title}</h2>
-                <p>{obj.text.slice(0, 60)}...</p>
-                <p>
-                  By {obj.author.first_name} {obj.author.last_name}
-                </p>
-                <p>
-                  Published {DateTime.fromISO(obj.timestamp).toLocaleString(DateTime.DATETIME_MED)}
-                </p>
-              </div>
-            );
-          })}
-      </div>
+      <h1>Blog</h1>
+      <Post posts={posts} />
     </>
   );
 }
@@ -64,5 +48,7 @@ export default App;
 // add ability to click on and display individual blog post with comments
 
 // add ability to add comments to posts
+
+// set up error/loading screens
 
 // GO BACK AND ENABLE CORS ONLY FOR THIS WEBSITE
