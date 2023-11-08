@@ -66,6 +66,10 @@ a {
   padding: 0 20px;
 }
 
+.comment p {
+  overflow-wrap: break-word;
+}
+
 .no-comments {
   text-align: center;
 }
@@ -95,6 +99,10 @@ a {
   text-align: left;
   font-size: 15px;
   font-weight: 600;
+}
+
+label span {
+  font-weight: 400;
 }
 
 .form-group input {

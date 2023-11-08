@@ -16,7 +16,6 @@ function App() {
         }
         const postData = await response.json();
         setPosts(postData);
-        // console.log(postData);
       } catch (err) {
         setPosts([]);
         console.log(err);
@@ -36,7 +35,6 @@ function App() {
         }
         const commentData = await response.json();
         setComments(commentData);
-        // console.log(commentData);
       } catch (err) {
         setComments([]);
         console.log(err);
@@ -56,9 +54,3 @@ function App() {
 }
 
 export default App;
-
-// add post request to handleSubmit instead of the form action/method
-
-// add validation to fields
-
-// GO BACK AND ENABLE CORS ONLY FOR THIS WEBSITE

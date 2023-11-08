@@ -44,11 +44,15 @@ function AddComment() {
       {displayForm ? (
         <form onSubmit={handleSubmit} className="comment-form">
           <div className="form-group">
-            <label htmlFor="display_name">Display Name</label>
+            <label htmlFor="display_name">
+              Display Name <span>(numbers and letters only)</span>
+            </label>
             <input
               type="text"
               name="display_name"
               id="display_name"
+              pattern="[a-zA-Z0-9]+"
+              maxLength={30}
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
               required
@@ -60,6 +64,7 @@ function AddComment() {
               type="text"
               name="text"
               id="text"
+              maxLength={500}
               value={text}
               onChange={(e) => setText(e.target.value)}
               required
