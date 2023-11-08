@@ -5,6 +5,7 @@ import { Outlet, Link } from 'react-router-dom';
 function App() {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
+  const [updateComments, setUpdateComments] = useState(false);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -42,20 +43,22 @@ function App() {
       }
     };
     getComments();
-  }, []);
+  }, [updateComments]);
 
   return (
     <>
       <Link to="/">
         <h1 className="header-txt">Blog4Cats</h1>
       </Link>
-      <Outlet context={{ posts, comments }} />
+      <Outlet context={{ posts, comments, updateComments, setUpdateComments }} />
     </>
   );
 }
 
 export default App;
 
-// add ability to add comments to posts
+// add post request to handleSubmit instead of the form action/method
+
+// add validation to fields
 
 // GO BACK AND ENABLE CORS ONLY FOR THIS WEBSITE

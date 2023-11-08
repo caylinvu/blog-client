@@ -1,31 +1,73 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useOutletContext } from 'react-router-dom';
 
 function AddComment() {
+  const [displayName, setDisplayName] = useState('');
+  const [text, setText] = useState('');
   const [displayForm, setDisplayForm] = useState(false);
   const { postId } = useParams();
+  const { updateComments, setUpdateComments } = useOutletContext();
 
-  const cancelComment = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        'https://blog-api-production-7f4c.up.railway.app/api/posts/' + postId + '/comments',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: text,
+            display_name: displayName,
+          }),
+        },
+      );
+      if (response.status === 200) {
+        setDisplayName('');
+        setText('');
+        setDisplayForm(false);
+        setUpdateComments(!updateComments);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleCancel = () => {
+    setDisplayName('');
+    setText('');
     setDisplayForm(false);
   };
 
   return (
     <div className="add-comment">
       {displayForm ? (
-        <form className="comment-form" action={'/api/posts/' + postId + '/comments'} method="POST">
+        <form onSubmit={handleSubmit} className="comment-form">
           <div className="form-group">
             <label htmlFor="display_name">Display Name</label>
-            <input type="text" name="display_name" id="display_name" required />
+            <input
+              type="text"
+              name="display_name"
+              id="display_name"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+              required
+            />
           </div>
           <div className="form-group">
             <label htmlFor="text">Comment</label>
-            <input type="text" name="text" id="text" required />
+            <input
+              type="text"
+              name="text"
+              id="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              required
+            />
           </div>
           <div className="btn-container">
-            <button type="submit" onSubmit={() => setDisplayForm(false)}>
-              Submit
-            </button>
-            <button type="button" onClick={cancelComment}>
+            <button type="submit">Submit</button>
+            <button type="button" onClick={handleCancel}>
               Cancel
             </button>
           </div>
