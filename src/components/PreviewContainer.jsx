@@ -2,7 +2,7 @@ import { DateTime } from 'luxon';
 import { useOutletContext } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-function PostContainer() {
+function PreviewContainer() {
   const { posts } = useOutletContext();
 
   return (
@@ -34,4 +34,4 @@ function PostContainer() {
   );
 }
 
-export default PostContainer;
+export default PreviewContainer;
