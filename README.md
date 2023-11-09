@@ -1,8 +1,7 @@
 # Blog Client
 Frontend client to access and comment on blog posts from backend blog API
 
-## Live
-- https://blog-client-steel.vercel.app/
+Live: https://blog-client-steel.vercel.app/
 
 ## Features
 - View blog posts and associated comments
